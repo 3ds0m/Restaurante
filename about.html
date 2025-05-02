@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conócenos | La Buena Mesa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Botón de accesibilidad -->
+    <button class="accessibility-btn" id="accessibility-btn" aria-label="Opciones de accesibilidad">
+        <i class="fas fa-universal-access"></i>
+    </button>
+    
+    <div class="accessibility-menu" id="accessibility-menu">
+        <h3 class="accessibility-title" data-lang="accessibility-title">Opciones de accesibilidad</h3>
+        <div class="accessibility-option">
+            <span class="option-label" data-lang="high-contrast">Alto contraste</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="high-contrast-toggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <span class="option-label" data-lang="large-text">Texto grande</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="large-text-toggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Header y navegación -->
+    <header class="header scrolled" id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                </span>
+                La Buena <span>Mesa</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link" data-lang="nav-home">Inicio</a></li>
+                    <li><a href="index.html#menu" class="nav-link" data-lang="nav-menu">Carta</a></li>
+                    <li><a href="index.html#reservations" class="nav-link" data-lang="nav-reservations">Reservas</a></li>
+                    <li><a href="about.html" class="nav-link active" data-lang="nav-about">Conócenos</a></li>
+                    <li><a href="location.html" class="nav-link" data-lang="nav-location">Ubicación</a></li>
+                </ul>
+                <button class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="language-switcher">
+                <button class="language-btn" id="current-language">
+                    <img src="https://flagcdn.com/w20/es.png" alt="Español" class="language-flag" id="current-flag">
+                    <span data-lang="lang-es">Español</span>
+                </button>
+                <div class="language-dropdown">
+                    <a href="#" class="language-option" data-lang-code="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español" class="language-flag">
+                        <span>Español</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang-code="en">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                        <span>English</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang-code="fr">
+                        <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="language-flag">
+                        <span>Français</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang-code="pt">
+                        <img src="https://flagcdn.com/w20/pt.png" alt="Português" class="language-flag">
+                        <span>Português</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title" data-lang="about-title">Conócenos</h1>
+            <p class="page-subtitle" data-lang="about-subtitle">Nuestra historia, equipo y filosofía</p>
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section class="section about-story">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="about-subtitle" data-lang="story-subtitle">Nuestra Historia</span>
+                    <h2 class="about-title" data-lang="story-title">Una Pasión por la Gastronomía</h2>
+                    <p class="about-text" data-lang="story-text-1">La Buena Mesa nació en 2010 de la pasión por la gastronomía de los hermanos Martínez. Tras años de formación en las mejores escuelas culinarias de Europa, decidieron abrir un restaurante que combinara las técnicas tradicionales con toques modernos.</p>
+                    <p class="about-text" data-lang="story-text-2">Desde entonces, nos hemos convertido en un referente gastronómico de la ciudad, ofreciendo una experiencia culinaria única que respeta el producto y las tradiciones, pero con un enfoque contemporáneo.</p>
+                    <p class="about-text" data-lang="story-text-3">Nuestro compromiso con la calidad y la excelencia nos ha llevado a seleccionar cuidadosamente cada ingrediente, trabajando estrechamente con productores locales para garantizar la frescura y sostenibilidad de nuestros platos.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/placeholder.svg?height=500&width=700" alt="Historia del restaurante" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores Section -->
+    <section class="section about-values">
+        <div class="container">
+            <h2 class="section-title" data-lang="values-title">Nuestros Valores</h2>
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="value-title" data-lang="value-1-title">Sostenibilidad</h3>
+                    <p class="value-text" data-lang="value-1-text">Trabajamos con productores locales y sostenibles, reduciendo nuestra huella ecológica y apoyando la economía local.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title" data-lang="value-2-title">Pasión</h3>
+                    <p class="value-text" data-lang="value-2-text">Cada plato que servimos es una expresión de nuestra pasión por la gastronomía y nuestro compromiso con la excelencia.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title" data-lang="value-3-title">Comunidad</h3>
+                    <p class="value-text" data-lang="value-3-text">Creemos en crear un espacio acogedor donde nuestros clientes se sientan como en casa y parte de nuestra familia.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="value-title" data-lang="value-4-title">Excelencia</h3>
+                    <p class="value-text" data-lang="value-4-text">Buscamos la excelencia en cada detalle, desde la selección de ingredientes hasta el servicio y la presentación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section about-team">
+        <div class="container">
+            <h2 class="section-title" data-lang="team-title">Nuestro Equipo</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Carlos Martínez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Carlos Martínez</h3>
+                        <p class="member-role" data-lang="chef-role">Chef Ejecutivo</p>
+                        <p class="member-bio" data-lang="chef-bio">Formado en las mejores escuelas de cocina de España y Francia, Carlos aporta su pasión por la gastronomía tradicional con un toque contemporáneo.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Elena Martínez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Elena Martínez</h3>
+                        <p class="member-role" data-lang="manager-role">Directora</p>
+                        <p class="member-bio" data-lang="manager-bio">Con una amplia experiencia en gestión de restaurantes de alta cocina, Elena se encarga de que cada detalle sea perfecto para nuestros clientes.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Miguel Rodríguez">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Miguel Rodríguez</h3>
+                        <p class="member-role" data-lang="sommelier-role">Sommelier</p>
+                        <p class="member-bio" data-lang="sommelier-bio">Experto en vinos nacionales e internacionales, Miguel selecciona cuidadosamente cada botella de nuestra bodega para crear maridajes perfectos.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section about-gallery">
+        <div class="container">
+            <h2 class="section-title" data-lang="gallery-title">Galería</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen del restaurante 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen del restaurante 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen del restaurante 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen del restaurante 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen del restaurante 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen del restaurante 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <h2 class="cta-title" data-lang="cta-title">¿Listo para vivir una experiencia gastronómica única?</h2>
+            <p class="cta-text" data-lang="cta-text">Reserva tu mesa ahora y déjate sorprender por nuestra propuesta culinaria.</p>
+            <a href="index.html#reservations" class="btn btn-primary" data-lang="cta-btn">Reservar Mesa</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">La Buena <span>Mesa</span></a>
+                    <p class="footer-text" data-lang="footer-text">Ofrecemos una experiencia gastronómica única con ingredientes frescos y de temporada en un ambiente acogedor y elegante.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title" data-lang="footer-links">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link" data-lang="nav-home">Inicio</a></li>
+                        <li><a href="index.html#menu" class="footer-link" data-lang="nav-menu">Carta</a></li>
+                        <li><a href="index.html#reservations" class="footer-link" data-lang="nav-reservations">Reservas</a></li>
+                        <li><a href="about.html" class="footer-link" data-lang="nav-about">Conócenos</a></li>
+                        <li><a href="location.html" class="footer-link" data-lang="nav-location">Ubicación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title" data-lang="footer-hours">Horario</h3>
+                    <ul class="footer-links">
+                        <li><span data-lang="hours-weekdays">Lunes a Viernes: 13:00 - 16:00 | 20:00 - 23:30</span></li>
+                        <li><span data-lang="hours-weekend">Sábados y Domingos: 13:00 - 16:30 | 20:00 - 00:00</span></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title" data-lang="footer-contact">Contacto</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p data-lang="address">Calle Principal 123, Madrid, España</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <p>+34 912 345 678</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p>info@labuenamesarestaurante.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang="copyright">&copy; 2025 La Buena Mesa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+</body>
+</html>

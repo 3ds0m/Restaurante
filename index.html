@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Buena Mesa | Restaurante Gourmet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Botón de accesibilidad -->
+    <button class="accessibility-btn" id="accessibility-btn" aria-label="Opciones de accesibilidad">
+        <i class="fas fa-universal-access"></i>
+    </button>
+    
+    <div class="accessibility-menu" id="accessibility-menu">
+        <h3 class="accessibility-title" data-lang="accessibility-title">Opciones de accesibilidad</h3>
+        <div class="accessibility-option">
+            <span class="option-label" data-lang="high-contrast">Alto contraste</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="high-contrast-toggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <span class="option-label" data-lang="large-text">Texto grande</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="large-text-toggle">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Header y navegación -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                </span>
+                La Buena <span>Mesa</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link active" data-lang="nav-home">Inicio</a></li>
+                    <li><a href="#menu" class="nav-link" data-lang="nav-menu">Carta</a></li>
+                    <li><a href="#reservations" class="nav-link" data-lang="nav-reservations">Reservas</a></li>
+                    <li><a href="about.html" class="nav-link" data-lang="nav-about">Conócenos</a></li>
+                    <li><a href="location.html" class="nav-link" data-lang="nav-location">Ubicación</a></li>
+                </ul>
+                <button class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <div class="language-switcher">
+                <button class="language-btn" id="current-language">
+                    <img src="https://flagcdn.com/w20/es.png" alt="Español" class="language-flag" id="current-flag">
+                    <span data-lang="lang-es">Español</span>
+                </button>
+                <div class="language-dropdown">
+                    <a href="#" class="language-option" data-lang-code="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt="Español" class="language-flag">
+                        <span>Español</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang-code="en">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="language-flag">
+                        <span>English</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang-code="fr">
+                        <img src="https://flagcdn.com/w20/fr.png" alt="Français" class="language-flag">
+                        <span>Français</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang-code="pt">
+                        <img src="https://flagcdn.com/w20/pt.png" alt="Português" class="language-flag">
+                        <span>Português</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-lang="hero-title">Una Experiencia Gastronómica Inolvidable</h1>
+                <p class="hero-subtitle" data-lang="hero-subtitle">Sabores auténticos, ingredientes frescos y un ambiente acogedor para disfrutar de los mejores momentos.</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary" data-lang="hero-btn-menu">Ver Carta</a>
+                    <a href="#reservations" class="btn btn-outline" data-lang="hero-btn-reservations">Reservar Mesa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Especialidades Section -->
+    <section class="section specialties" id="specialties">
+        <div class="container">
+            <h2 class="section-title" data-lang="specialties-title">Nuestras Especialidades</h2>
+            <div class="specialties-container">
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3 class="specialty-title" data-lang="specialty-1-title">Mariscos Frescos</h3>
+                    <p class="specialty-text" data-lang="specialty-1-text">Seleccionamos los mejores mariscos del día para ofrecerte platos con el auténtico sabor del mar.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="specialty-title" data-lang="specialty-2-title">Ingredientes Locales</h3>
+                    <p class="specialty-text" data-lang="specialty-2-text">Trabajamos con productores locales para garantizar la frescura y calidad de todos nuestros ingredientes.</p>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-icon">
+                        <i class="fas fa-wine-glass-alt"></i>
+                    </div>
+                    <h3 class="specialty-title" data-lang="specialty-3-title">Selección de Vinos</h3>
+                    <p class="specialty-text" data-lang="specialty-3-text">Nuestra bodega cuenta con una cuidada selección de vinos nacionales e internacionales para maridar perfectamente con tu comida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <div class="container">
+            <h2 class="section-title" data-lang="menu-title">Nuestra Carta</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" data-lang="filter-all">Todos</button>
+                <button class="filter-btn" data-filter="starters" data-lang="filter-starters">Entrantes</button>
+                <button class="filter-btn" data-filter="main" data-lang="filter-main">Principales</button>
+                <button class="filter-btn" data-filter="desserts" data-lang="filter-desserts">Postres</button>
+                <button class="filter-btn" data-filter="drinks" data-lang="filter-drinks">Bebidas</button>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card" data-category="starters">
+                    <div class="menu-image">
+                        <img src="https://s3.abcstatics.com/abc/sevilla/media/gurmesevilla/2010/02/carpacciodeterneraconparmesano.jpg" alt="Carpaccio de Ternera">
+                        <div class="menu-overlay">
+                            <div class="menu-buttons">
+                                <a href="#" class="menu-btn preview" data-modal="dish1" data-lang="btn-preview">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <span class="menu-tag" data-lang="tag-starters">Entrante</span>
+                        <h3 class="menu-title">Carpaccio de Ternera</h3>
+                        <div class="menu-info">
+                            <div class="menu-price">12€</div>
+                            <div class="menu-rating">
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="starters">
+                    <div class="menu-image">
+                        <img src="https://www.annarecetasfaciles.com/files/ensalada-tomate-burrata-2-1-scaled.jpg" alt="Burrata con Tomate">
+                        <div class="menu-overlay">
+                            <div class="menu-buttons">
+                                <a href="#" class="menu-btn preview" data-modal="dish2" data-lang="btn-preview">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <span class="menu-tag" data-lang="tag-starters">Entrante</span>
+                        <h3 class="menu-title">Burrata con Tomate</h3>
+                        <div class="menu-info">
+                            <div class="menu-price">14€</div>
+                            <div class="menu-rating">
+                                <div class="stars">★★★★☆</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="main">
+                    <div class="menu-image">
+                        <img src="https://www.paulinacocina.net/wp-content/uploads/2023/09/paella-valenciana-tradicional-1200x676.jpg" alt="Paella Valenciana">
+                        <div class="menu-overlay">
+                            <div class="menu-buttons">
+                                <a href="#" class="menu-btn preview" data-modal="dish3" data-lang="btn-preview">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <span class="menu-tag" data-lang="tag-main">Principal</span>
+                        <h3 class="menu-title">Paella Valenciana</h3>
+                        <div class="menu-info">
+                            <div class="menu-price">22€</div>
+                            <div class="menu-rating">
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="main">
+                    <div class="menu-image">
+                        <img src="https://content-cocina.lecturas.com/medio/2021/12/21/paso_a_paso_para_realizar_solomillo_wellington_resultado_final_9b939f0b_1280x720.jpg" alt="Solomillo Wellington">
+                        <div class="menu-overlay">
+                            <div class="menu-buttons">
+                                <a href="#" class="menu-btn preview" data-modal="dish4" data-lang="btn-preview">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <span class="menu-tag" data-lang="tag-main">Principal</span>
+                        <h3 class="menu-title">Solomillo Wellington</h3>
+                        <div class="menu-info">
+                            <div class="menu-price">28€</div>
+                            <div class="menu-rating">
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="desserts">
+                    <div class="menu-image">
+                        <img src="https://www.recetasnestle.com.ec/sites/default/files/srh_recipes/7f45d6f8807ebc775928651a3398dce9.png" alt="Tiramisú">
+                        <div class="menu-overlay">
+                            <div class="menu-buttons">
+                                <a href="#" class="menu-btn preview" data-modal="dish5" data-lang="btn-preview">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <span class="menu-tag" data-lang="tag-desserts">Postre</span>
+                        <h3 class="menu-title">Tiramisú</h3>
+                        <div class="menu-info">
+                            <div class="menu-price">8€</div>
+                            <div class="menu-rating">
+                                <div class="stars">★★★★☆</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="drinks">
+                    <div class="menu-image">
+                        <img src="https://www.lavanguardia.com/files/image_948_465/uploads/2021/06/10/60c2575eb0b7f.jpeg" alt="Selección de Vinos">
+                        <div class="menu-overlay">
+                            <div class="menu-buttons">
+                                <a href="#" class="menu-btn preview" data-modal="dish6" data-lang="btn-preview">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <span class="menu-tag" data-lang="tag-drinks">Bebida</span>
+                        <h3 class="menu-title">Selección de Vinos</h3>
+                        <div class="menu-info">
+                            <div class="menu-price">Desde 18€</div>
+                            <div class="menu-rating">
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-cta">
+                <a href="menu-completo.html" class="btn btn-primary" data-lang="menu-btn-full">Ver Carta Completa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="section featured" id="featured">
+        <div class="container featured-container">
+            <div class="featured-content">
+                <span class="featured-subtitle" data-lang="featured-subtitle">Plato del Chef</span>
+                <h2 class="featured-title" data-lang="featured-title">Risotto de Setas Silvestres</h2>
+                <p class="featured-text" data-lang="featured-text">Un cremoso risotto elaborado con arroz carnaroli, setas silvestres de temporada, queso parmesano y un toque de trufa negra. Una experiencia gastronómica que no te puedes perder.</p>
+                <ul class="featured-list">
+                    <li class="featured-item">
+                        <div class="featured-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span data-lang="featured-item-1">Setas recolectadas de forma sostenible</span>
+                    </li>
+                    <li class="featured-item">
+                        <div class="featured-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span data-lang="featured-item-2">Arroz carnaroli de la mejor calidad</span>
+                    </li>
+                    <li class="featured-item">
+                        <div class="featured-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span data-lang="featured-item-3">Queso parmesano curado 24 meses</span>
+                    </li>
+                    <li class="featured-item">
+                        <div class="featured-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span data-lang="featured-item-4">Toque final de trufa negra fresca</span>
+                    </li>
+                </ul>
+                <a href="#reservations" class="btn btn-primary" data-lang="featured-btn">Reservar Ahora</a>
+            </div>
+            <div class="featured-image">
+                <img src="https://i.dietdoctor.com/es/wp-content/uploads/2021/05/risotto-de-pollo-con-setas-v.jpg?auto=compress%2Cformat&w=1000&h=1000&fit=crop&rect=0,2060,2854,2832" alt="Risotto de Setas Silvestres" class="featured-img">
+                <div class="featured-badge" data-lang="featured-badge">Especial</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" data-lang="testimonials-title">Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-track" id="testimonial-track">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-quote" data-lang="testimonial-1">La mejor experiencia gastronómica que he tenido en mucho tiempo. El solomillo Wellington estaba perfecto y el servicio fue impecable. Volveré sin duda.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Rodríguez">
+                                    </div>
+                                    <h4 class="author-name">Carlos Rodríguez</h4>
+                                    <p class="author-title" data-lang="testimonial-1-title">Cliente Habitual</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-quote" data-lang="testimonial-2">Celebramos nuestro aniversario en La Buena Mesa y fue una velada perfecta. La comida deliciosa, el ambiente acogedor y un servicio atento. Totalmente recomendable.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Laura Martínez">
+                                    </div>
+                                    <h4 class="author-name">Laura Martínez</h4>
+                                    <p class="author-title" data-lang="testimonial-2-title">Cliente Satisfecha</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <p class="testimonial-quote" data-lang="testimonial-3">Como crítico gastronómico, puedo decir que La Buena Mesa ofrece una propuesta culinaria excepcional. Destaca su respeto por el producto y la creatividad en cada plato.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Miguel Sánchez">
+                                    </div>
+                                    <h4 class="author-name">Miguel Sánchez</h4>
+                                    <p class="author-title" data-lang="testimonial-3-title">Crítico Gastronómico</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn prev" id="prev-btn">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button class="slider-btn next" id="next-btn">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="slider-dots" id="slider-dots">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservations Section -->
+    <section class="section reservations" id="reservations">
+        <div class="container">
+            <h2 class="section-title" data-lang="reservations-title">Reserva tu Mesa</h2>
+            <div class="reservations-container">
+                <div class="reservation-info">
+                    <h3 class="reservation-subtitle" data-lang="reservation-subtitle">Información de Reservas</h3>
+                    <p class="reservation-text" data-lang="reservation-text">Para garantizar la mejor experiencia, te recomendamos reservar con antelación. Para grupos de más de 8 personas, por favor contacta directamente con nosotros.</p>
+                    <ul class="reservation-details">
+                        <li class="reservation-detail">
+                            <div class="detail-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4 data-lang="hours-title">Horario</h4>
+                                <p data-lang="hours-weekdays">Lunes a Viernes: 13:00 - 16:00 | 20:00 - 23:30</p>
+                                <p data-lang="hours-weekend">Sábados y Domingos: 13:00 - 16:30 | 20:00 - 00:00</p>
+                            </div>
+                        </li>
+                        <li class="reservation-detail">
+                            <div class="detail-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="detail-content">
+                                <h4 data-lang="contact-title">Contacto</h4>
+                                <p>+34 912 345 678</p>
+                                <p>reservas@labuenamesarestaurante.com</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="reservation-form-container">
+                    <form id="reservation-form" class="reservation-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label" data-lang="form-name">Nombre completo</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label" data-lang="form-email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone" class="form-label" data-lang="form-phone">Teléfono</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guests" class="form-label" data-lang="form-guests">Comensales</label>
+                                <select id="guests" name="guests" class="form-input" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date" class="form-label" data-lang="form-date">Fecha</label>
+                                <input type="date" id="date" name="date" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time" class="form-label" data-lang="form-time">Hora</label>
+                                <select id="time" name="time" class="form-input" required>
+                                    <!-- Las opciones se generarán dinámicamente con JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comments" class="form-label" data-lang="form-comments">Comentarios o peticiones especiales</label>
+                            <textarea id="comments" name="comments" class="form-input" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" data-lang="form-submit">Confirmar Reserva</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">La Buena <span>Mesa</span></a>
+                    <p class="footer-text" data-lang="footer-text">Ofrecemos una experiencia gastronómica única con ingredientes frescos y de temporada en un ambiente acogedor y elegante.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title" data-lang="footer-links">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link" data-lang="nav-home">Inicio</a></li>
+                        <li><a href="#menu" class="footer-link" data-lang="nav-menu">Carta</a></li>
+                        <li><a href="#reservations" class="footer-link" data-lang="nav-reservations">Reservas</a></li>
+                        <li><a href="about.html" class="footer-link" data-lang="nav-about">Conócenos</a></li>
+                        <li><a href="location.html" class="footer-link" data-lang="nav-location">Ubicación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title" data-lang="footer-hours">Horario</h3>
+                    <ul class="footer-links">
+                        <li><span data-lang="hours-weekdays">Lunes a Viernes: 13:00 - 16:00 | 20:00 - 23:30</span></li>
+                        <li><span data-lang="hours-weekend">Sábados y Domingos: 13:00 - 16:30 | 20:00 - 00:00</span></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title" data-lang="footer-contact">Contacto</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p data-lang="address">Calle Principal 123, Madrid, España</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <p>+34 912 345 678</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p>info@labuenamesarestaurante.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang="copyright">&copy; 2025 La Buena Mesa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal para detalles de platos -->
+    <div class="modal" id="dish-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Carpaccio de Ternera</h3>
+                <p class="modal-subtitle" id="modal-subtitle" data-lang="modal-subtitle">Entrante</p>
+            </div>
+            <div class="modal-body">
+                <div class="dish-preview">
+                    <img src="/placeholder.svg?height=400&width=600" alt="Vista previa del plato" id="modal-image">
+                </div>
+                <div class="dish-details">
+                    <div>
+                        <p class="dish-description" id="modal-description">Finas láminas de ternera con rúcula, parmesano y aceite de trufa.</p>
+                        <div class="dish-ingredients">
+                            <h4 class="dish-ingredients-title" data-lang="ingredients-title">Ingredientes</h4>
+                            <ul id="modal-ingredients">
+                                <li class="dish-ingredient-item">
+                                    <span class="ingredient-check">✓</span>
+                                    <span>Ternera de primera calidad</span>
+                                </li>
+                                <li class="dish-ingredient-item">
+                                    <span class="ingredient-check">✓</span>
+                                    <span>Rúcula fresca</span>
+                                </li>
+                                <li class="dish-ingredient-item">
+                                    <span class="ingredient-check">✓</span>
+                                    <span>Queso parmesano curado</span>
+                                </li>
+                                <li class="dish-ingredient-item">
+                                    <span class="ingredient-check">✓</span>
+                                    <span>Aceite de trufa</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dish-pricing">
+                        <h4 class="dish-price-title" data-lang="price-title">Precio</h4>
+                        <div class="dish-price-value" id="modal-price">12€</div>
+                        <div class="dish-actions">
+                            <a href="#reservations" class="btn btn-primary" data-lang="btn-reserve">Reservar Mesa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación de reserva -->
+    <div class="modal success-modal" id="success-modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="success-title" data-lang="success-title">¡Reserva Confirmada!</h3>
+            <p class="success-message" data-lang="success-message">Gracias por tu reserva. Hemos enviado los detalles a tu correo electrónico.</p>
+            <button class="success-btn" id="success-close" data-lang="btn-continue">Continuar</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/reservations.js"></script>
+</body>
+</html>

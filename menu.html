@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta | La Buena Mesa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>La Buena Mesa</h1>
+        </div>
+        <nav id="main-nav">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" data-lang="home">Inicio</a></li>
+                <li><a href="menu.html" data-lang="menu">Carta</a></li>
+                <li><a href="about.html" data-lang="about">Conócenos</a></li>
+                <li><a href="reservations.html" data-lang="reservations">Reservas</a></li>
+                <li><a href="location.html" data-lang="location">Ubicación</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="pt">Português</option>
+                </select>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h2 data-lang="our-menu">Nuestra Carta</h2>
+        </section>
+
+        <section class="menu-section">
+            <div class="menu-category">
+                <h3 data-lang="starters">Entrantes</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Carpaccio de Ternera</h4>
+                            <span class="price">12€</span>
+                        </div>
+                        <p data-lang="dish-carpaccio">Finas láminas de ternera con rúcula, parmesano y aceite de trufa.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Burrata con Tomate</h4>
+                            <span class="price">14€</span>
+                        </div>
+                        <p data-lang="dish-burrata">Burrata cremosa con tomates cherry, albahaca y reducción de balsámico.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Croquetas de Jamón</h4>
+                            <span class="price">10€</span>
+                        </div>
+                        <p data-lang="dish-croquetas">Croquetas caseras de jamón ibérico con alioli de ajo negro.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 data-lang="main-courses">Platos Principales</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Paella Valenciana</h4>
+                            <span class="price">22€</span>
+                        </div>
+                        <p data-lang="dish-paella">Auténtica paella con mariscos frescos y azafrán.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Risotto al Tartufo</h4>
+                            <span class="price">20€</span>
+                        </div>
+                        <p data-lang="dish-risotto">Cremoso risotto con trufa negra y parmesano.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Solomillo Wellington</h4>
+                            <span class="price">28€</span>
+                        </div>
+                        <p data-lang="dish-wellington">Tierno solomillo envuelto en hojaldre con duxelle de champiñones.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 data-lang="desserts">Postres</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Tiramisú</h4>
+                            <span class="price">8€</span>
+                        </div>
+                        <p data-lang="dish-tiramisu">Clásico tiramisú italiano con café y mascarpone.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Crema Catalana</h4>
+                            <span class="price">7€</span>
+                        </div>
+                        <p data-lang="dish-crema">Tradicional crema catalana con azúcar caramelizado.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Coulant de Chocolate</h4>
+                            <span class="price">9€</span>
+                        </div>
+                        <p data-lang="dish-coulant">Coulant de chocolate con interior fundente y helado de vainilla.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-lang="contact">Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Calle Principal 123, Ciudad</p>
+                <p><i class="fas fa-phone"></i> +34 123 456 789</p>
+                <p><i class="fas fa-envelope"></i> info@labuenamesarestaurante.com</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-lang="hours">Horario</h3>
+                <p data-lang="monday-friday">Lunes a Viernes: 12:00 - 23:00</p>
+                <p data-lang="saturday-sunday">Sábados y Domingos: 13:00 - 00:00</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-lang="follow-us">Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 La Buena Mesa. <span data-lang="rights">Todos los derechos reservados.</span></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+</body>
+</html>
