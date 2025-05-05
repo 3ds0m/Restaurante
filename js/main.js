@@ -18,73 +18,204 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.getElementById("nav-toggle")
   const navList = document.querySelector(".nav-list")
 
-  navToggle.addEventListener("click", () => {
-    navList.classList.toggle("active")
-  })
-
-  const navLinks = document.querySelectorAll(".nav-link")
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      navList.classList.remove("active")
+  if (navToggle && navList) {
+    navToggle.addEventListener("click", () => {
+      navList.classList.toggle("active")
     })
-  })
 
-  // Mobile menu toggle
-  const menuToggle = document.querySelector(".menu-toggle")
-  const navLinksOriginal = document.querySelector(".nav-links")
-
-  if (menuToggle && navLinksOriginal) {
-    menuToggle.addEventListener("click", () => {
-      navLinksOriginal.classList.toggle("active")
+    const navLinks = document.querySelectorAll(".nav-link")
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navList.classList.remove("active")
+      })
     })
   }
 
-  // Language selector
-  const languageSelect = document.getElementById("language-select")
-
-  if (languageSelect) {
-    // Check if there's a saved language preference
-    const savedLanguage = localStorage.getItem("language")
-    if (savedLanguage) {
-      languageSelect.value = savedLanguage
-      changeLanguage(savedLanguage)
-    }
-
-    // Add event listener for language change
-    languageSelect.addEventListener("change", function () {
-      const language = this.value
-      localStorage.setItem("language", language)
-      changeLanguage(language)
-    })
-  }
-
-  // Translations object (example - replace with your actual translations)
+  // Language switcher functionality
+  // Define translations object
   const translations = {
-    en: {
-      greeting: "Hello",
-      description: "This is a description in English.",
-    },
-    fr: {
-      greeting: "Bonjour",
-      description: "Ceci est une description en français.",
-    },
     es: {
-      greeting: "Hola",
-      description: "Esta es una descripción en español.",
+      home: "Inicio",
+      menu: "Menú",
+      reservation: "Reservación",
+      about: "Nosotros",
+      contact: "Contacto",
+      welcome: "Bienvenido",
+      description: "Descubre sabores auténticos y experiencias inolvidables en nuestro restaurante.",
+      bookTable: "Reserva tu Mesa",
+      ourMenu: "Nuestro Menú",
+      specialities: "Especialidades del Chef",
+      starters: "Entrantes",
+      mainCourses: "Platos Principales",
+      desserts: "Postres",
+      drinks: "Bebidas",
+      all: "Todos",
+      aboutUs: "Sobre Nosotros",
+      ourHistory: "Nuestra Historia",
+      ourTeam: "Nuestro Equipo",
+      contactUs: "Contáctanos",
+      address: "Dirección",
+      phone: "Teléfono",
+      email: "Correo Electrónico",
+      openingHours: "Horario de Apertura",
+      mondayFriday: "Lunes - Viernes",
+      saturday: "Sábado",
+      sunday: "Domingo",
+      closed: "Cerrado",
+      testimonials: "Testimonios",
+      name: "Nombre",
+      message: "Mensaje",
+      sendMessage: "Enviar Mensaje",
+      accessibility: "Accesibilidad",
+      highContrast: "Alto Contraste",
+      largeText: "Texto Grande",
+      dishIngredients: "Ingredientes",
+      reservationFormTitle: "Reserva tu Mesa",
+      reservationFormName: "Nombre",
+      reservationFormEmail: "Correo Electrónico",
+      reservationFormPhone: "Teléfono",
+      reservationFormDate: "Fecha",
+      reservationFormTime: "Hora",
+      reservationFormPeople: "Número de Personas",
+      reservationFormSubmit: "Reservar Ahora",
+      successModalTitle: "¡Reserva Exitosa!",
+      successModalMessage: "Tu reserva ha sido confirmada. ¡Gracias!",
+      successModalClose: "Cerrar",
+      readMore: "Leer más",
+    },
+    en: {
+      home: "Home",
+      menu: "Menu",
+      reservation: "Reservation",
+      about: "About",
+      contact: "Contact",
+      welcome: "Welcome",
+      description: "Discover authentic flavors and unforgettable experiences in our restaurant.",
+      bookTable: "Book a Table",
+      ourMenu: "Our Menu",
+      specialities: "Chef's Specialities",
+      starters: "Starters",
+      mainCourses: "Main Courses",
+      desserts: "Desserts",
+      drinks: "Drinks",
+      all: "All",
+      aboutUs: "About Us",
+      ourHistory: "Our History",
+      ourTeam: "Our Team",
+      contactUs: "Contact Us",
+      address: "Address",
+      phone: "Phone",
+      email: "Email",
+      openingHours: "Opening Hours",
+      mondayFriday: "Monday - Friday",
+      saturday: "Saturday",
+      sunday: "Sunday",
+      closed: "Closed",
+      testimonials: "Testimonials",
+      name: "Name",
+      message: "Message",
+      sendMessage: "Send Message",
+      accessibility: "Accessibility",
+      highContrast: "High Contrast",
+      largeText: "Large Text",
+      dishIngredients: "Ingredients",
+      reservationFormTitle: "Book Your Table",
+      reservationFormName: "Name",
+      reservationFormEmail: "Email",
+      reservationFormPhone: "Phone",
+      reservationFormDate: "Date",
+      reservationFormTime: "Time",
+      reservationFormPeople: "Number of People",
+      reservationFormSubmit: "Book Now",
+      successModalTitle: "Successful Reservation!",
+      successModalMessage: "Your reservation has been confirmed. Thank you!",
+      successModalClose: "Close",
+      readMore: "Read more",
     },
   }
 
-  // Function to change language
-  function changeLanguage(language) {
-    const elements = document.querySelectorAll("[data-lang]")
-
-    elements.forEach((element) => {
-      const key = element.getAttribute("data-lang")
-      if (translations[language] && translations[language][key]) {
-        element.textContent = translations[language][key]
+// Modifica la función changeLanguage así:
+function changeLanguage(language) {
+  if (!translations[language]) return; // Si el idioma no existe, salir
+  
+  // Actualizar todos los elementos con data-lang
+  document.querySelectorAll("[data-lang]").forEach((element) => {
+    const key = element.getAttribute("data-lang");
+    if (translations[language][key]) {
+      // Para inputs, textareas y buttons usamos value en lugar de textContent
+      if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'BUTTON') {
+        element.value = translations[language][key];
+      } else {
+        element.textContent = translations[language][key];
       }
-    })
+    }
+  });
+
+  // Actualizar el selector de idioma visual
+  const selectedOption = document.querySelector(`.language-option[data-lang-code="${language}"]`);
+  if (selectedOption) {
+    const flagImg = selectedOption.querySelector("img")?.src;
+    const languageText = selectedOption.querySelector("span")?.textContent;
+
+    const currentFlag = document.getElementById("current-flag");
+    const currentLangSpan = document.querySelector("#current-language span");
+
+    if (currentFlag && flagImg) currentFlag.src = flagImg;
+    if (currentLangSpan && languageText) currentLangSpan.textContent = languageText;
   }
+
+  // Actualizar atributo lang del HTML
+  document.documentElement.lang = language;
+  localStorage.setItem("preferredLanguage", language);
+}
+
+// Asegúrate que el HTML tenga elementos como:
+// <span data-lang="home">Home</span>
+// <button data-lang="bookTable">Book a Table</button>
+
+
+  // Reemplaza el código de accesibilidad con esto:
+const accessibilityBtn = document.getElementById("accessibility-btn");
+const accessibilityMenu = document.getElementById("accessibility-menu");
+const highContrastToggle = document.getElementById("high-contrast-toggle");
+const largeTextToggle = document.getElementById("large-text-toggle");
+
+if (accessibilityBtn && accessibilityMenu) {
+  // Toggle del menú
+  accessibilityBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Evita que el evento se propague
+    accessibilityMenu.classList.toggle("active");
+  });
+
+  // Cerrar al hacer click fuera
+  document.addEventListener("click", (e) => {
+    if (!accessibilityMenu.contains(e.target) && e.target !== accessibilityBtn) {
+      accessibilityMenu.classList.remove("active");
+    }
+  });
+
+  // High contrast
+  if (highContrastToggle) {
+    highContrastToggle.checked = localStorage.getItem("highContrast") === "true";
+    document.body.classList.toggle("high-contrast", highContrastToggle.checked);
+
+    highContrastToggle.addEventListener("change", () => {
+      document.body.classList.toggle("high-contrast", highContrastToggle.checked);
+      localStorage.setItem("highContrast", highContrastToggle.checked);
+    });
+  }
+
+  // Large text
+  if (largeTextToggle) {
+    largeTextToggle.checked = localStorage.getItem("largeText") === "true";
+    document.body.classList.toggle("large-text", largeTextToggle.checked);
+
+    largeTextToggle.addEventListener("change", () => {
+      document.body.classList.toggle("large-text", largeTextToggle.checked);
+      localStorage.setItem("largeText", largeTextToggle.checked);
+    });
+  }
+}
 
   // Filter menu items
   const filterBtns = document.querySelectorAll(".filter-btn")
@@ -231,7 +362,8 @@ document.addEventListener("DOMContentLoaded", () => {
       dish4: {
         title: "Solomillo Wellington",
         subtitle: "Plato Principal",
-        image: "https://content-cocina.lecturas.com/medio/2021/12/21/paso_a_paso_para_realizar_solomillo_wellington_resultado_final_9b939f0b_1280x720.jpg",
+        image:
+          "https://content-cocina.lecturas.com/medio/2021/12/21/paso_a_paso_para_realizar_solomillo_wellington_resultado_final_9b939f0b_1280x720.jpg",
         description: "Tierno solomillo envuelto en hojaldre con duxelle de champiñones.",
         price: "28€",
         ingredients: ["Solomillo de ternera", "Hojaldre artesano", "Champiñones", "Jamón ibérico", "Mostaza Dijon"],
@@ -334,60 +466,6 @@ document.addEventListener("DOMContentLoaded", () => {
       successClose.addEventListener("click", () => {
         successModal.classList.remove("active")
         document.body.style.overflow = "auto"
-      })
-    }
-  }
-
-  // Accessibility options
-  const accessibilityBtn = document.getElementById("accessibility-btn")
-  const accessibilityMenu = document.getElementById("accessibility-menu")
-  const highContrastToggle = document.getElementById("high-contrast-toggle")
-  const largeTextToggle = document.getElementById("large-text-toggle")
-
-  if (accessibilityBtn && accessibilityMenu) {
-    accessibilityBtn.addEventListener("click", () => {
-      accessibilityMenu.classList.toggle("active")
-    })
-
-    document.addEventListener("click", (e) => {
-      if (!accessibilityMenu.contains(e.target) && e.target !== accessibilityBtn) {
-        accessibilityMenu.classList.remove("active")
-      }
-    })
-
-    if (highContrastToggle) {
-      // Check if high contrast was previously enabled
-      if (localStorage.getItem("highContrast") === "true") {
-        document.body.classList.add("high-contrast")
-        highContrastToggle.checked = true
-      }
-
-      highContrastToggle.addEventListener("change", () => {
-        if (highContrastToggle.checked) {
-          document.body.classList.add("high-contrast")
-          localStorage.setItem("highContrast", "true")
-        } else {
-          document.body.classList.remove("high-contrast")
-          localStorage.setItem("highContrast", "false")
-        }
-      })
-    }
-
-    if (largeTextToggle) {
-      // Check if large text was previously enabled
-      if (localStorage.getItem("largeText") === "true") {
-        document.body.classList.add("large-text")
-        largeTextToggle.checked = true
-      }
-
-      largeTextToggle.addEventListener("change", () => {
-        if (largeTextToggle.checked) {
-          document.body.classList.add("large-text")
-          localStorage.setItem("largeText", "true")
-        } else {
-          document.body.classList.remove("large-text")
-          localStorage.setItem("largeText", "false")
-        }
       })
     }
   }
